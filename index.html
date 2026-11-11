@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shanuzz Rajajinagar — Opening Invitation</title>
+<meta name="description" content="Shanuzz opens in Rajajinagar, Bengaluru on Monday, 23 November 2026. An invitation to the opening evening.">
+<meta name="theme-color" content="#1A1816">
+
+<link rel="preload" href="assets/fonts/Poppins-300.woff2" as="font" type="font/woff2">
+
+<script>
+/* Embed mode, decided before the first paint so nothing jumps.
+   Reading window.top from a cross-origin frame throws, and a throw means we
+   are framed. A normal page load returns here and changes nothing. */
+(function () {
+  var embedded = false;
+  try {
+    embedded = window.self !== window.top;
+  } catch (error) {
+    embedded = true;
+  }
+  if (embedded) document.documentElement.classList.add('is-embedded');
+})();
+</script>
+
+<style>
+/* ---------------------------------------------------------------------------
+   Shanuzz — Rajajinagar opening invitation.
+   Single file. No build step. Every asset path is relative to this file.
+   Motion uses transform and opacity only. All of it is removable through
+   prefers-reduced-motion, and the page still reads as finished without it.
+   --------------------------------------------------------------------------- */
+
+@font-face { font-family: "Nexa"; src: url("assets/fonts/NexaBold.ttf") format("truetype"); font-weight: 700 900; font-display: block; }
+@font-face { font-family: "Nexa"; src: url("assets/fonts/NexaLight.ttf") format("truetype"); font-weight: 200 400; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("assets/fonts/Poppins-200.woff2") format("woff2"); font-weight: 200; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("assets/fonts/Poppins-300.woff2") format("woff2"); font-weight: 300; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("assets/fonts/Poppins-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("assets/fonts/Poppins-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+
+:root {
+  --onyx: #1A1816;
+  --brown: #2C2723;
+  --ink: #3D322D;
+  --gold: #CC9600;
+  --gold-deep: #876300;
+  --champagne: #E8D5A3;
+  --cream: #FDF8F3;
+  --cream-warm: #F5EDE4;
+  --rose: #B87A6E;
+  --grey: #8B7D72;
+  --gold-ink: #7E5D00;
+
+  --display: "Nexa", "Poppins", system-ui, sans-serif;
+  --body: "Poppins", "Helvetica Neue", Arial, sans-serif;
+
+  --pad: clamp(20px, 6vw, 88px);
+  --maxw: 1180px;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--onyx); scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--onyx);
+  color: var(--cream);
+  font-family: var(--body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+h1, h2, h3 { margin: 0; font-weight: 800; }
+
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
+
+.kicker {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-indent: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.hair { height: 1px; background: rgba(204, 150, 0, .45); }
+.hair--solid { background: var(--gold); }
+
+/* ------------------------------------------------------------------ curtain */
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: var(--onyx);
+  display: grid;
+  place-items: center;
+  transform: translateY(0);
+  animation: curtainLift 900ms var(--ease) 500ms both;
+  will-change: transform;
+}
+.curtain-inner { display: grid; justify-items: center; gap: 18px; opacity: 0; animation: fadeUp 620ms var(--ease) 80ms forwards; }
+.curtain img { width: 168px; height: auto; }
+.curtain .curtain-rule { width: 76px; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: center; animation: drawRule 900ms var(--ease) 260ms forwards; }
+.curtain .curtain-word { font-family: var(--display); font-weight: 300; font-size: 10px; letter-spacing: .44em; text-indent: .44em; color: var(--gold); }
+@keyframes curtainLift { from { transform: translateY(0); } to { transform: translateY(-101%); } }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes drawRule { to { transform: scaleX(1); } }
+
+/* --------------------------------------------------------------------- hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(22px, 4vw, 40px) 0 clamp(26px, 4vw, 44px);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+/* The mark on dark is assets/logo-gold.png. Its floor is 150 px: the clear
+   ground between the two scissor rings is 2% of the mark's width, and below
+   150 px that gap drops under 3 px and the rings merge into one blob.
+   The flyer renders it at 167.8 px, so the header holds the same 168 px. */
+.hero-top img { width: clamp(168px, 13vw, 190px); height: auto; }
+.hero-top .mark {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: .42em;
+  text-indent: .42em;
+  color: var(--gold);
+  padding-top: 6px;
+  white-space: nowrap;
+}
+
+.hero-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(26px, 3.6vw, 44px);
+  padding-block: clamp(30px, 6vw, 64px) clamp(24px, 3.6vw, 36px);
+}
+
+.hero-copy { max-width: 100%; }
+
+/* the opening ring: one gold circle released around the date numeral when it
+   lands. transform and opacity only, one shot, then it is gone. */
+.halo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.45em;
+  height: 1.45em;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(.8);
+  pointer-events: none;
+  z-index: -1;
+  animation: halo 980ms var(--ease) 2050ms both;
+}
+@keyframes halo {
+  0%   { opacity: 0;   transform: translate(-50%, -50%) scale(.8); }
+  14%  { opacity: .8; }
+  100% { opacity: 0;   transform: translate(-50%, -50%) scale(1.22); }
+}
+
+.hero-row {
+  display: grid;
+  gap: clamp(24px, 3.6vw, 40px);
+  align-items: end;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(2rem, 9vw, 5.9rem);
+  line-height: 1.01;
+  letter-spacing: -.012em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-top: 18px;
+  text-wrap: balance;
+}
+.hero h1 span { display: block; color: var(--champagne); }
+
+.hero-sub {
+  margin-top: clamp(18px, 2.6vw, 26px);
+  max-width: 44ch;
+  font-size: clamp(.98rem, 1.35vw, 1.12rem);
+  line-height: 1.72;
+  color: rgba(253, 248, 243, .78);
+}
+
+/* date block */
+.datecard {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(16px, 2.4vw, 26px);
+  padding-top: clamp(10px, 2vw, 18px);
+}
+.datecard .big {
+  position: relative;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(4.4rem, 11vw, 7.4rem);
+  line-height: .76;
+  letter-spacing: -.03em;
+  color: var(--gold);
+  font-variant-numeric: lining-nums;
+}
+.datecard .stack {
+  border-left: 1px solid rgba(204, 150, 0, .45);
+  padding-left: clamp(14px, 2vw, 22px);
+  padding-bottom: 4px;
+}
+.datecard .month {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1;
+}
+.datecard .when {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(232, 213, 163, .85);
+  line-height: 1.5;
+}
+
+/* actions */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: clamp(22px, 3vw, 34px);
+}
+
+.btn-rsvp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  background: var(--champagne);
+  color: var(--onyx);
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  transition: transform 320ms var(--ease), background 320ms var(--ease);
+}
+.btn-rsvp:hover, .btn-rsvp:focus-visible { background: var(--cream); transform: translateY(-2px); }
+.btn-rsvp:active { transform: translateY(0); }
+.btn-rsvp .arrow { transition: transform 320ms var(--ease); }
+.btn-rsvp:hover .arrow { transform: translateX(4px); }
+
+/* the sheen is clipped by its own wrapper, so the send ring can leave the box */
+.sheen-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* the one shimmer: a light that crosses the button edge, transform only */
+.btn-rsvp .sheen {
+  position: absolute;
+  top: 0; bottom: 0; left: -40%;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .55), transparent);
+  transform: translateX(0);
+  animation: sheen 5.2s ease-in-out 2.4s infinite;
+  pointer-events: none;
+}
+@keyframes sheen {
+  0%   { transform: translateX(0); opacity: 0; }
+  8%   { opacity: .9; }
+  28%  { transform: translateX(360%); opacity: 0; }
+  100% { transform: translateX(360%); opacity: 0; }
+}
+
+/* the send flourish: one gold frame leaving the button, one fast sheen pass.
+   620 ms, then the element holds still. Nothing loops. */
+.btn-rsvp::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  transform: scale(1);
+  pointer-events: none;
+}
+.btn-rsvp.is-sending::after { animation: sendRing 620ms cubic-bezier(.2, .7, .3, 1) both; }
+@keyframes sendRing {
+  0%   { opacity: .95; transform: scale(1); }
+  100% { opacity: 0;   transform: scale(1.1); }
+}
+.btn-rsvp.is-sending .sheen { animation: sheenOnce 620ms ease-out both; }
+@keyframes sheenOnce {
+  0%   { transform: translateX(0); opacity: 0; }
+  22%  { opacity: .95; }
+  100% { transform: translateX(360%); opacity: 0; }
+}
+
+.link-plain {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(253, 248, 243, .72);
+  padding: 12px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 280ms ease, border-color 280ms ease;
+}
+.link-plain:hover, .link-plain:focus-visible { color: var(--champagne); border-color: rgba(204, 150, 0, .6); }
+
+/* hairline with a slow travelling highlight */
+.shimmer {
+  position: relative;
+  height: 1px;
+  background: rgba(204, 150, 0, .28);
+  overflow: hidden;
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 22%;
+  background: linear-gradient(90deg, transparent, var(--champagne), transparent);
+  transform: translateX(-120%);
+  animation: shimmerSweep 7s ease-in-out 1.2s infinite;
+}
+@keyframes shimmerSweep {
+  0%   { transform: translateX(-120%); }
+  45%  { transform: translateX(560%); }
+  100% { transform: translateX(560%); }
+}
+
+/* drifting gold specks */
+.specks { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.specks i {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0;
+  animation: drift 15s linear infinite;
+}
+.specks i:nth-child(1) { left: 12%; top: 74%; animation-delay: 0s; }
+.specks i:nth-child(2) { left: 31%; top: 62%; animation-delay: 3.6s; width: 2px; height: 2px; }
+.specks i:nth-child(3) { left: 68%; top: 78%; animation-delay: 6.2s; }
+.specks i:nth-child(4) { left: 84%; top: 58%; animation-delay: 9.4s; width: 2px; height: 2px; }
+.specks i:nth-child(5) { left: 51%; top: 84%; animation-delay: 12.1s; }
+@keyframes drift {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  15%  { opacity: .5; }
+  70%  { opacity: .28; }
+  100% { transform: translateY(-190px) translateX(14px); opacity: 0; }
+}
+
+/* hero foot */
+.hero-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(253, 248, 243, .5);
+}
+.scroll-cue { display: inline-flex; align-items: center; gap: 10px; }
+.scroll-cue i {
+  display: block; width: 1px; height: 26px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  transform-origin: top;
+  animation: cue 2.6s ease-in-out infinite;
+}
+@keyframes cue { 0%, 100% { transform: scaleY(.35); opacity: .4; } 50% { transform: scaleY(1); opacity: 1; } }
+
+/* --------------------------------------------------------------- entrance
+   Base state is the finished state. Each animation starts from the hidden
+   state and holds it until its delay ends, so nothing can get stuck. */
+.rise { animation: riseIn 880ms var(--ease) both; animation-delay: calc(880ms + var(--d, 0ms)); }
+.draw { animation: drawLine 1100ms var(--ease) both; animation-delay: calc(1080ms + var(--d, 0ms)); }
+@keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.draw { transform-origin: left; }
+
+/* --------------------------------------------------- sections, scroll reveal */
+.section { position: relative; padding: clamp(64px, 9vw, 132px) 0; }
+.section--cream { background: var(--cream); color: var(--ink); }
+.section--warm { background: var(--cream-warm); color: var(--ink); }
+.section--onyx { background: var(--onyx); color: var(--cream); }
+
+.section--cream .kicker, .section--warm .kicker { color: var(--gold-ink); }
+
+.section-head { max-width: 720px; }
+.section h2 {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.65rem, 4.4vw, 2.9rem);
+  line-height: 1.08;
+  letter-spacing: -.01em;
+  margin-top: 16px;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.section .note {
+  margin-top: 16px;
+  max-width: 52ch;
+  font-size: clamp(.95rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--grey);
+}
+
+/* three moments */
+.moments {
+  display: grid;
+  gap: clamp(26px, 3.4vw, 40px);
+  margin-top: clamp(38px, 5vw, 60px);
+}
+.moment { border-top: 1px solid rgba(204, 150, 0, .55); padding-top: 20px; }
+.moment .no {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: .26em;
+  color: var(--gold-deep);
+}
+.moment h3 {
+  margin-top: 12px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--brown);
+}
+.moment p { margin-top: 10px; font-size: 1rem; line-height: 1.75; color: var(--grey); }
+
+/* services */
+.services {
+  margin-top: clamp(34px, 4.4vw, 54px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid rgba(204, 150, 0, .55);
+}
+.services span {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(204, 150, 0, .28);
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(.72rem, 1.05vw, .82rem);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* the work: stills from the salon's own reels, linked out to Instagram.
+   Instagram refuses to embed these posts, so each card is a link, not a player.
+   No third-party script, no remote image, nothing that loads at view time. */
+.works {
+  display: grid;
+  gap: clamp(26px, 3.4vw, 40px);
+  margin-top: clamp(38px, 5vw, 60px);
+}
+.work-card {
+  display: block;
+  border-top: 1px solid rgba(204, 150, 0, .55);
+  padding-top: 20px;
+}
+.work-card:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 6px; }
+
+.work-poster {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--cream-warm);
+}
+.work-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 640ms var(--ease);
+}
+/* the play mark: a gold ring and a small triangle, sized like a mark on a
+   printed invitation rather than a player control */
+.work-glyph {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(204, 150, 0, .95);
+  border-radius: 50%;
+  background: rgba(26, 24, 22, .38);
+  transition: background 360ms ease, border-color 360ms ease, transform 360ms var(--ease);
+}
+.work-glyph::after {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  border-left: 6px solid var(--champagne);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+.work-card:hover .work-poster img,
+.work-card:focus-visible .work-poster img { transform: scale(1.035); }
+.work-card:hover .work-glyph,
+.work-card:focus-visible .work-glyph { background: rgba(26, 24, 22, .58); transform: scale(1.06); }
+
+.work-no {
+  display: block;
+  margin-top: 18px;
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: .26em;
+  color: var(--gold-deep);
+  line-height: 1;
+}
+.work-label {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--brown);
+}
+.work-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(135, 99, 0, .35);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  transition: border-color 300ms ease;
+}
+.work-go .awn { display: inline-block; transition: transform 300ms var(--ease); }
+.work-card:hover .work-go,
+.work-card:focus-visible .work-go { border-color: var(--gold-deep); }
+.work-card:hover .work-go .awn,
+.work-card:focus-visible .work-go .awn { transform: translate(2px, -2px); }
+
+/* venue */
+.venue-rule {
+  display: block;
+  height: 1px;
+  margin-top: clamp(34px, 4.4vw, 52px);
+  background: rgba(204, 150, 0, .5);
+  transform-origin: left;
+}
+.js .venue-rule { transform: scaleX(0); }
+.js .venue-rule.is-in {
+  transform: scaleX(1);
+  transition: transform 820ms var(--ease) 90ms;
+}
+.venue-grid {
+  display: grid;
+  gap: clamp(28px, 4vw, 56px);
+  padding-top: clamp(24px, 3.4vw, 38px);
+}
+.venue-grid .label {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1;
+}
+.venue-grid address {
+  margin-top: 14px;
+  font-style: normal;
+  font-size: clamp(.98rem, 1.3vw, 1.08rem);
+  line-height: 1.8;
+  color: rgba(253, 248, 243, .82);
+}
+.venue-grid .venue-actions { display: grid; gap: 14px; align-content: start; }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 15px 20px;
+  border: 1px solid rgba(204, 150, 0, .5);
+  color: var(--champagne);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: background 300ms ease, border-color 300ms ease, transform 300ms var(--ease);
+}
+.btn-ghost:hover, .btn-ghost:focus-visible {
+  background: rgba(204, 150, 0, .12);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.btn-ghost .arrow { transition: transform 300ms var(--ease); }
+.btn-ghost:hover .arrow { transform: translateX(4px); }
+
+/* footer */
+.foot { padding-block: clamp(28px, 4vw, 44px) clamp(34px, 5vw, 54px); }
+.foot-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 22px;
+  font-size: 11px;
+  letter-spacing: .1em;
+  line-height: 1.9;
+  text-transform: uppercase;
+  color: rgba(168, 155, 144, .95);
+}
+.foot-inner a:hover { color: var(--champagne); }
+.foot .right { text-align: right; }
+
+/* ------------------------------------------------------------- breakpoints */
+@media (min-width: 760px) {
+  .services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .moments { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .works { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .venue-grid { grid-template-columns: 1.25fr .75fr; align-items: start; }
+}
+@media (min-width: 900px) {
+  .hero-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .datecard { justify-content: flex-end; padding-bottom: 4px; }
+}
+@media (max-width: 899px) {
+  .hero-sub { max-width: 40ch; }
+  .actions .btn-rsvp { flex: 1 1 100%; justify-content: center; }
+}
+@media (max-width: 600px) {
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .venue-grid address br { display: none; }
+  .hero-foot { display: grid; gap: 10px; justify-content: start; }
+  .scroll-cue i {
+    width: 24px;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    animation: none;
+    opacity: .9;
+  }
+}
+@media (max-width: 420px) {
+  .services span { font-size: .68rem; letter-spacing: .12em; padding: 15px 0; }
+  .foot-inner { display: block; }
+  .foot .right { text-align: left; margin-top: 14px; }
+}
+
+/* ------------------------------------------------------------- embed mode
+   Only an iframe gets the is-embedded class, so none of this reaches a normal
+   page load. The bar is fixed, one line high, and the hero gives back the
+   same height at the top, so no content sits under it and nothing shifts. */
+.embed-bar { display: none; }
+
+.is-embedded .embed-bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  height: 38px;
+  padding: 0 14px;
+  background: var(--onyx);
+  border-bottom: 1px solid rgba(204, 150, 0, .55);
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  animation: barIn 320ms ease-out both;
+}
+.embed-bar .bar-note {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.embed-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 0;
+  white-space: nowrap;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(204, 150, 0, .55);
+  transition: color 260ms ease, border-color 260ms ease;
+}
+.embed-bar a:hover, .embed-bar a:focus-visible { color: var(--cream); border-color: var(--gold); }
+.embed-bar a:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+@keyframes barIn { from { opacity: 0; transform: translateY(-100%); } to { opacity: 1; transform: none; } }
+
+.is-embedded .hero { padding-top: calc(clamp(22px, 4vw, 40px) + 38px); }
+
+/* a fixed-height frame has no room for a promise of more page below */
+.is-embedded .scroll-cue { display: none; }
+
+@media (max-width: 420px) {
+  .is-embedded .embed-bar { gap: 10px; font-size: 9px; letter-spacing: .14em; }
+}
+
+/* ------------------------------------------------ reduced motion: full stop */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .curtain { display: none; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .rise, .draw { opacity: 1; transform: none; }
+  .specks { display: none; }
+  .shimmer::after { display: none; }
+  .btn-rsvp .sheen { display: none; }
+  .halo { display: none; }
+  .btn-rsvp::after { display: none; }
+  .venue-rule { transform: none; }
+  .scroll-cue i { opacity: .8; }
+
+  /* the embed bar simply is there: no slide, no fade */
+  .is-embedded .embed-bar { animation: none; }
+
+  /* the work cards hold still: no lift, no zoom, no glyph growth */
+  .work-card:hover .work-poster img,
+  .work-card:focus-visible .work-poster img,
+  .work-card:hover .work-glyph,
+  .work-card:focus-visible .work-glyph,
+  .work-card:hover .work-go .awn,
+  .work-card:focus-visible .work-go .awn { transform: none; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- embed mode only: hidden unless the head script finds a parent frame -->
+<div class="embed-bar">
+  <span class="bar-note">Shanuzz &middot; Rajajinagar</span>
+  <a class="bar-open" href="./" target="_blank" rel="noopener">Open full page <span aria-hidden="true">&nearr;</span></a>
+</div>
+
+<!-- opening curtain -->
+<div class="curtain" aria-hidden="true">
+  <div class="curtain-inner">
+    <img src="assets/logo-gold.png" alt="" width="500" height="127">
+    <span class="curtain-rule"></span>
+    <span class="curtain-word">BECOME</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="specks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <div class="wrap hero-top">
+    <img src="assets/logo-gold.png" alt="Shanuzz" width="500" height="127">
+    <span class="mark">BECOME</span>
+  </div>
+
+  <div class="wrap hero-main">
+    <div class="hero-copy">
+      <p class="kicker rise" style="--d:120ms">Grand opening &middot; Rajajinagar</p>
+      <h1 class="rise" style="--d:200ms">Rajajinagar,<span>meet Shanuzz.</span></h1>
+    </div>
+
+    <div class="hero-row">
+      <p class="hero-sub rise" style="--d:340ms">A new Shanuzz salon opens on 1st Main Road. Come for the salon, stay for the consultation.</p>
+      <div class="datecard rise" style="--d:420ms">
+        <div class="big">23<span class="halo" aria-hidden="true"></span></div>
+        <div class="stack">
+          <div class="month">November 2026</div>
+          <div class="when">Monday &middot; 6:00 pm onwards</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="shimmer draw" style="--d:520ms"></div>
+    <div class="actions rise" style="--d:620ms">
+      <a class="btn-rsvp" href="https://wa.me/916269646966?text=Hello%20Shanuzz%2C%20I%20would%20like%20to%20attend%20the%20Rajajinagar%20opening%20on%2023%20November%202026." target="_blank" rel="noopener">
+        <span>RSVP on WhatsApp</span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+        <span class="sheen-wrap" aria-hidden="true"><span class="sheen"></span></span>
+      </a>
+      <a class="link-plain" href="out/shanuzz-rajajinagar-opening.ics">Add to calendar</a>
+      <a class="link-plain" href="https://www.google.com/maps/search/?api=1&amp;query=Shanuzz%20Salon%2C%201031%2F8-23%2F1%2C%20Ground%20Floor%2C%20Om%20Niwas%20Apartment%2C%201st%20Main%20Road%2C%20Dr%20Rajkumar%20Rd%2C%204th%20Block%2C%20Rajajinagar%2C%20Bengaluru%2C%20Karnataka%20560010" target="_blank" rel="noopener">Get directions</a>
+    </div>
+
+    <div class="hero-foot rise" style="--d:760ms">
+      <span>Shanuzz &middot; Rajajinagar (BRR) &middot; Bengaluru</span>
+      <a class="scroll-cue" href="#evening"><i aria-hidden="true"></i> The evening</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section section--cream" id="evening">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">The evening</p>
+        <h2>An hour, unhurried</h2>
+        <p class="note">Our team will be at the colour bar. There is no schedule to keep and no queue to hold.</p>
+      </div>
+
+      <div class="moments">
+        <article class="moment" data-reveal style="--d:60ms">
+          <p class="no">01</p>
+          <h3>Walk through</h3>
+          <p>The full salon, floor to ceiling. The stations, the wash area, the colour bar, and the light through the windows.</p>
+        </article>
+        <article class="moment" data-reveal style="--d:150ms">
+          <p class="no">02</p>
+          <h3>Talk to our team</h3>
+          <p>Bring your questions about your own hair. We look, we ask, and we tell you what we would actually do.</p>
+        </article>
+        <article class="moment" data-reveal style="--d:240ms">
+          <p class="no">03</p>
+          <h3>Book first</h3>
+          <p>Guests with us that evening can take priority booking for opening-week appointments.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--warm">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">What we do</p>
+        <h2>Hair, planned with you</h2>
+        <p class="note">Every appointment begins with a consultation. We read your hair, your routine and your history before we suggest a colour.</p>
+      </div>
+
+      <div class="services" data-reveal>
+        <span>Haircuts</span>
+        <span>Smoothening and keratin</span>
+        <span>Men&rsquo;s grooming</span>
+        <span>Global colour</span>
+        <span>Hair spa and scalp rituals</span>
+        <span>Nails</span>
+        <span>Balayage</span>
+        <span>Styling</span>
+        <span>Professional hair-care retail</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream" id="work">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">The work</p>
+        <h2>What leaves the chair</h2>
+        <p class="note">Three stills from our own reels. Filmed at our Mumbai salons and posted by @shanuzzsalon07.</p>
+      </div>
+
+      <div class="works">
+        <a class="work-card" href="https://www.instagram.com/reel/DMFpwIDK4Uu/" target="_blank" rel="noopener" data-reveal style="--d:60ms">
+          <span class="work-poster">
+            <img src="assets/work-01.jpg" alt="Long hair after a colour appointment, with the stylist behind the chair." width="720" height="900" decoding="async">
+            <span class="work-glyph" aria-hidden="true"></span>
+          </span>
+          <span class="work-no">01</span>
+          <span class="work-label">Colour on long hair</span>
+          <span class="work-go">Open on Instagram <span class="awn" aria-hidden="true">&nearr;</span></span>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/C39oENFiFdK/" target="_blank" rel="noopener" data-reveal style="--d:150ms">
+          <span class="work-poster">
+            <img src="assets/work-02.jpg" alt="Silver colour on hair and beard, with the stylist behind the chair." width="720" height="900" decoding="async">
+            <span class="work-glyph" aria-hidden="true"></span>
+          </span>
+          <span class="work-no">02</span>
+          <span class="work-label">Silver hair and beard</span>
+          <span class="work-go">Open on Instagram <span class="awn" aria-hidden="true">&nearr;</span></span>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DfFXe5AMKrq/" target="_blank" rel="noopener" data-reveal style="--d:240ms">
+          <span class="work-poster">
+            <img src="assets/work-03.jpg" alt="Curls from a perm being set, with the stylist behind the chair." width="720" height="900" decoding="async">
+            <span class="work-glyph" aria-hidden="true"></span>
+          </span>
+          <span class="work-no">03</span>
+          <span class="work-label">A perm, set in curls</span>
+          <span class="work-go">Open on Instagram <span class="awn" aria-hidden="true">&nearr;</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--onyx">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="kicker">The address</p>
+        <h2>1st Main Road, Rajajinagar</h2>
+      </div>
+
+      <span class="venue-rule" data-rule aria-hidden="true"></span>
+
+      <div class="venue-grid">
+        <div data-reveal style="--d:60ms">
+          <p class="label">Shanuzz, Rajajinagar (BRR)</p>
+          <address>
+            1031/8-23/1, Ground Floor, Om Niwas Apartment,<br>
+            1st Main Road, Dr Rajkumar Rd, 4th Block,<br>
+            Rajajinagar, Bengaluru, Karnataka 560010
+          </address>
+        </div>
+        <div class="venue-actions" data-reveal style="--d:140ms">
+          <a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Shanuzz%20Salon%2C%201031%2F8-23%2F1%2C%20Ground%20Floor%2C%20Om%20Niwas%20Apartment%2C%201st%20Main%20Road%2C%20Dr%20Rajkumar%20Rd%2C%204th%20Block%2C%20Rajajinagar%2C%20Bengaluru%2C%20Karnataka%20560010" target="_blank" rel="noopener">
+            <span>Get directions</span><span class="arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <a class="btn-ghost" href="out/shanuzz-rajajinagar-opening.ics">
+            <span>Add to calendar</span><span class="arrow" aria-hidden="true">+</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap foot">
+      <div class="hair"></div>
+      <div class="foot-inner">
+        <div>WhatsApp 062696 46966<br><a href="https://instagram.com/shanuzzsalon.bengaluru" target="_blank" rel="noopener">@shanuzzsalon.bengaluru</a></div>
+        <div class="right">
+          Consultation-led appointments.<br>Monday, 23 November 2026
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // --- embed mode: the bar opens this page, in full, in a new tab --------
+  // The markup carries "./" so the link works before this runs; here it is
+  // pinned to the exact URL this frame was loaded from.
+  var barOpen = document.querySelector('.embed-bar .bar-open');
+  if (barOpen && document.documentElement.classList.contains('is-embedded')) {
+    barOpen.href = window.location.href;
+  }
+
+  // --- scroll reveals and the one drawing rule -------------------------
+  // Without IntersectionObserver, or with motion turned down, nothing hides.
+  if ('IntersectionObserver' in window && !reduce.matches) {
+    document.documentElement.classList.add('js');
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    document.querySelectorAll('[data-reveal]').forEach(function (el) {
+      el.classList.add('reveal');
+      io.observe(el);
+    });
+    document.querySelectorAll('[data-rule]').forEach(function (el) {
+      io.observe(el);
+    });
+  }
+
+  // --- the RSVP flourish ------------------------------------------------
+  // The link is held for 160 ms, one heartbeat, then opened. If the popup is
+  // refused, the same link is followed in place, so it always fires. With
+  // motion turned down, or without this script, the anchor is untouched.
+  var rsvp = document.querySelector('.btn-rsvp');
+  if (!rsvp) return;
+
+  var sending = false;
+
+  rsvp.addEventListener('click', function (event) {
+    if (sending || reduce.matches) return;
+
+    event.preventDefault();
+    sending = true;
+    rsvp.classList.add('is-sending');
+
+    var href = rsvp.href;
+    setTimeout(function () {
+      var tab = window.open(href, '_blank');
+      if (tab) { tab.opener = null; } else { window.location.href = href; }
+    }, 160);
+
+    // The flourish runs its 620 ms and then holds still.
+    setTimeout(function () {
+      rsvp.classList.remove('is-sending');
+      sending = false;
+    }, 820);
+  });
+})();
+</script>
+
+<style>
+/* Reveal start state is added by the script, so a no-JS load is fully visible. */
+[data-reveal].reveal { opacity: 0; transform: translateY(22px); }
+[data-reveal].reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 780ms var(--ease) var(--d, 0ms), transform 780ms var(--ease) var(--d, 0ms);
+}
+</style>
+
+</body>
+</html>

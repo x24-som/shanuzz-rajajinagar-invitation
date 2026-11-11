@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Shanuzz — shared brand layer for print pieces.
+   Used by src/letter.html and src/flyer.html. index.html carries its own copy
+   inline so it stays a single self-contained file.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/NexaBold.ttf") format("truetype");
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/NexaLight.ttf") format("truetype");
+  font-weight: 200 400;
+  font-style: normal;
+  font-display: block;
+}
+
+/* Poppins is self-hosted so the files render with no network. */
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-200.woff2") format("woff2"); font-weight: 200; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-300.woff2") format("woff2"); font-weight: 300; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-500.woff2") format("woff2"); font-weight: 500; font-display: block; }
+@font-face { font-family: "Poppins"; src: url("fonts/Poppins-600.woff2") format("woff2"); font-weight: 600; font-display: block; }
+
+:root {
+  --onyx:      #1A1816;
+  --brown:     #2C2723;
+  --ink:       #3D322D;
+  --gold:      #CC9600;
+  --gold-deep: #876300;
+  --champagne: #E8D5A3;
+  --cream:     #FDF8F3;
+  --cream-warm:#F5EDE4;
+  --rose:      #B87A6E;
+  --rose-soft: #D4A095;
+  --grey:      #8B7D72;
+
+  /* The display face. Swap the first family to fall back to Poppins only. */
+  --display: "Nexa", "Poppins", sans-serif;
+  --accent:  "Nexa", "Poppins", sans-serif;
+  --body:    "Poppins", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+p { margin: 0; }

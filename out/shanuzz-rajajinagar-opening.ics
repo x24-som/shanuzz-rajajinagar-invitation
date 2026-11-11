@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Shanuzz//Rajajinagar Opening//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:shanuzz-rajajinagar-opening-20261123@shanuzzsalon.bengaluru
+DTSTAMP:20261111T120000Z
+DTSTART:20261123T123000Z
+DTEND:20261123T153000Z
+SUMMARY:Shanuzz Rajajinagar - Grand Opening
+LOCATION:Shanuzz, 1031/8-23/1, Ground Floor, Om Niwas Apartment, 1st Main R
+ oad, Dr Rajkumar Rd, 4th Block, Rajajinagar, Bengaluru, Karnataka 560010
+DESCRIPTION:Shanuzz opens in Rajajinagar. An evening from 6:00 pm with our 
+ colour team at the colour bar. Walk through the salon, ask about your own 
+ hair, and take priority booking for opening-week appointments. RSVP on Wha
+ tsApp 062696 46966.
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Shanuzz Rajajinagar opening, 6:00 pm
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
